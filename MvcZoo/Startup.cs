@@ -25,6 +25,7 @@ namespace MvcZoo
         {
             services.AddMvc();
 
+            // EF middleware
             string cs = Configuration.GetConnectionString("ZooDbCS");
             services.AddDbContext<ZooContext>(options => options.UseSqlServer(cs));
         }
