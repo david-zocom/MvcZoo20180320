@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcZoo.Data;
 using MvcZoo.Models;
+using MvcZoo.ViewModels;
 
 namespace MvcZoo.Controllers
 {
@@ -150,6 +151,18 @@ namespace MvcZoo.Controllers
         private bool AnimalExists(int id)
         {
             return _context.Animals.Any(e => e.Id == id);
+        }
+
+        public IActionResult Magic()
+        {
+            Animal animal = new Animal() { Name = "fox" };
+            Cage cage = new Cage()
+            {
+                Animals = new List<Animal>() { animal }
+            };
+            animal.MyCage = cage;
+            AnimalCageViewModel ac = new AnimalCageViewModel() { Animal = animal, Cage = cage };
+            return View(ac);
         }
     }
 }

@@ -33,5 +33,10 @@ namespace MvcZoo.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        public IActionResult Smurf()
+        {
+            var x = new { Ax = "5", Bx = 42 };
+            return View(new { Ax = "5", Bx = 42 });
+        }
     }
 }
